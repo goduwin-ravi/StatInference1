@@ -1,0 +1,52 @@
+---
+title: "Statical Inference Course Project"
+output: html_document
+---
+
+#### 1. Show where the distribution is centered at and compare it to the theoretical center of the distribution.
+
+```{r}
+mns = NULL
+for (i in 1 : 1000)
+  mns = c(mns, mean(rexp(40, 0.2)))
+hist(mns)
+```
+
+The distribution is centered at:
+```{r}
+mean(mns)
+```
+
+The theoretical center of the distribution is:
+```{r}
+lambda <- 0.2
+1 / lambda
+```
+
+The actual center of the distribution is very close to the theoretical center of the distribution.
+
+#### 2. Show how variable it is and compare it to the theoretical variance of the distribution.
+
+```{r}
+vrs = NULL
+for (i in 1 : 1000)
+  vrs = c(vrs, var(rexp(40, 0.2)))
+hist(vrs)
+```
+
+The variance of the distribution is:
+```{r}
+mean(vrs)
+```
+
+The theoretical variance of the distribution is:
+```{r}
+lambda <- 0.2
+1 / (lambda ^ 2)
+```
+
+The actual variance of the distribution is very close to the theoretical variance of the distribution.
+
+#### 3. Show that the distribution is approximately normal.
+
+Since the exponential(0.2)s are independent and identically distributed, their sum converges to a normal distribution, by the Central Limit Theorem.
